@@ -1,0 +1,41 @@
+- name: Install Docker and Configure to start on boot
+  hosts: ec2-server
+  become: true
+
+  tasks:
+    - name: Update the instance to install updated packages
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install the most recent Docker Community Edition package
+      yum:
+        name: docker
+        state: present
+
+    - name: Start the Docker service
+      service:
+        name: docker
+        state: started
+
+
+    - name: Add the ec2-user to the docker group so that Docker commands can run without using sudo
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes
+
+
+    - name: Configure Docker to start on boot
+      service:
+        name: docker
+        enabled: true
+
+    - name: Verify Docker installation
+      command: docker --version
+      register: docker_version_output
+      changed_when: false
+
+    - name: Diplay Docker verion
+      debug:
+        msg: "{{ docker_version_output.stdout }}"

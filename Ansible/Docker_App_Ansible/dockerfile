@@ -1,0 +1,16 @@
+# Python runtime as a parent image
+FROM python:3.9-slim
+
+# Working directory in the container
+WORKDIR /app
+
+COPY . /app
+
+# Install any needed packages configured in requirements.txt
+RUN pip install -r requirements.txt
+
+# Make port 80 available outside this container
+EXPOSE 80
+
+# Run the Flask application when the container starts
+CMD ["python", "my_web.py"]

@@ -1,0 +1,22 @@
+- hosts: ec2-server
+  tasks:
+    - name: Building docker file
+      command: docker build -t my-simple-web .
+
+    - name: Stop and Remove exising Docker application (if it exists)
+      shell: |
+        docker stop my-running-web-app || true
+        docker rm my-running-web-app || true
+      ignore_errors: yes
+
+    - name: Running docker file
+      command: docker run -dit --name my-running-web-app -p 80:80 my-simple-web
+
+    - name: Checking Docker Application is running
+      command: docker ps
+      register: running_docker_app
+
+
+    - name: Displaying Running Docker Application
+      debug:
+        msg: "{{ running_docker_app.stdout }}"

@@ -16,7 +16,7 @@ The pipeline is triggered whenever code is pushed to GitHub. It consists of two 
 
 #### Building the Docker Image
 
-The pipeline logs into Docker Hub, a cloud-based container registry.
+The pipeline executes in the virtual ubuntu latest environment and pulls the repository code.
 
 A pre-configured Dockerfile is used to build the image. The built image is then pushed to Docker Hub.
 

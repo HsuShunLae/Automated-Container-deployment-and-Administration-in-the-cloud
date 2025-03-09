@@ -61,7 +61,7 @@ A valid Docker Hub account.
 
 A valid Dockerfile in the repository.
 
-SSH connection to the target AWS EC2 instance configured under Azure DevOps service connections.
+SSH connection to the target AWS EC2 instance configured in GitHub secrets.
 
 AWS EC2 instance's security group must allow port 22 (SSH) and port 80 (HTTP).
 

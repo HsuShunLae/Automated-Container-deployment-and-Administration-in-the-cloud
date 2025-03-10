@@ -2,7 +2,7 @@
 
 This document outlines how GitHub Action CI/CD Pipeline will automatically build and deploy Docker image on AWS EC2 whenver code is pushed from GitHub.
 
-## Workflow
+## Workflow 
 
 ### Preconfiguration
 

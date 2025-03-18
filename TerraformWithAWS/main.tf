@@ -9,11 +9,7 @@ terraform{
 
   required_version = ">= 1.10.5"
 }
-provider "aws" {
-    region = "eu-west-1"
-    access_key = ${{ secrets.access_key }} //input your access_key
-    secret_key = ${{ secrets.secret_key }}  //input your secret_key
-}
+
 
 module "VPC" {
   source = "./VPC"

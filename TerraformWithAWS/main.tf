@@ -11,8 +11,8 @@ terraform{
 }
 provider "aws" {
     region = "eu-west-1"
-    access_key = "AKIA2KBHZO6Q4TYXN5DH"
-    secret_key = "JIvIIxA91hlKT7Z5eHxeCoG8IjOiOzkNWFwgH55+"
+    access_key = ${{ secrets.access_key }} //input your access_key
+    secret_key = ${{ secrets.secret_key }}  //input your secret_key
 }
 
 module "VPC" {
